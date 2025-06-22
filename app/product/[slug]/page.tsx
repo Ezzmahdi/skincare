@@ -5,9 +5,9 @@ import Footer from "@/components/Footer"
 import ProductDetail from "@/components/ProductDetail"
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 async function getProduct(slug: string) {
@@ -21,7 +21,8 @@ async function getProduct(slug: string) {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const product = await getProduct(params.slug)
+  const { slug } = await params
+  const product = await getProduct(slug)
 
   if (!product) {
     return {
@@ -41,7 +42,8 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function ProductPage({ params }: PageProps) {
-  const product = await getProduct(params.slug)
+  const { slug } = await params
+  const product = await getProduct(slug)
 
   if (!product) {
     notFound()
