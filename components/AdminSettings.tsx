@@ -69,9 +69,10 @@ export default function AdminSettings() {
 
       setSettings((prev) => ({ ...prev, [key]: value.trim() }))
       alert(`${key.replace("_", " ")} updated successfully!`)
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error updating setting:", error)
-      alert(`Error updating ${key.replace("_", " ")}: ${error.message}`)
+      const errorMessage = error instanceof Error ? error.message : "Unknown error"
+      alert(`Error updating ${key.replace("_", " ")}: ${errorMessage}`)
     } finally {
       setSaving((prev) => ({ ...prev, [key]: false }))
     }
@@ -103,7 +104,7 @@ export default function AdminSettings() {
           </div>
           <div>
             <h2 className="text-2xl font-bold text-gray-800">Business Settings</h2>
-            <p className="text-gray-600">Configure your store's contact information and WhatsApp integration</p>
+            <p className="text-gray-600">Configure your store&apos;s contact information and WhatsApp integration</p>
           </div>
         </div>
       </div>
@@ -209,7 +210,7 @@ export default function AdminSettings() {
         <div className="mt-8 p-4 bg-gray-50 rounded-lg">
           <h4 className="font-medium text-gray-800 mb-2">WhatsApp Link Preview:</h4>
           <p className="text-sm text-gray-600 break-all">
-            https://wa.me/{settings.whatsapp_number?.replace(/[^0-9]/g, "") || "XXXXXXXXXX"}?text=Hi! I'm interested in
+            https://wa.me/{settings.whatsapp_number?.replace(/[^0-9]/g, "") || "XXXXXXXXXX"}?text=Hi! I&apos;m interested in
             your products.
           </p>
         </div>

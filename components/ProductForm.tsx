@@ -320,7 +320,7 @@ export default function ProductForm({ product, onSave, onCancel }: ProductFormPr
                   onChange={(e) => setFormData((prev) => ({ ...prev, whatsapp_message: e.target.value }))}
                   rows={3}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-transparent"
-                  placeholder="Hi! I'm interested in [Product Name]. Can you tell me more about it?"
+                  placeholder="Hi! I&apos;m interested in [Product Name]. Can you tell me more about it?"
                 />
                 <p className="text-xs text-gray-500 mt-1">
                   This message will be pre-filled when customers click the WhatsApp button
