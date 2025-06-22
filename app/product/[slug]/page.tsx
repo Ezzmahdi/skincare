@@ -4,7 +4,7 @@ import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import ProductDetail from "@/components/ProductDetail"
 
-interface ProductPageProps {
+interface PageProps {
   params: {
     slug: string
   }
@@ -20,7 +20,7 @@ async function getProduct(slug: string) {
   return product
 }
 
-export async function generateMetadata({ params }: ProductPageProps) {
+export async function generateMetadata({ params }: PageProps) {
   const product = await getProduct(params.slug)
 
   if (!product) {
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
   }
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: PageProps) {
   const product = await getProduct(params.slug)
 
   if (!product) {
