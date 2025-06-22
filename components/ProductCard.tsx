@@ -22,7 +22,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         // Handle both array and error responses
         if (Array.isArray(data)) {
-          const whatsappSetting = data.find((s: any) => s.key === "whatsapp_number")
+          const whatsappSetting = data.find((s: { key: string; value: string }) => s.key === "whatsapp_number")
           if (whatsappSetting) {
             setWhatsappNumber(whatsappSetting.value)
           }

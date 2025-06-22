@@ -19,7 +19,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       try {
         const res = await fetch("/api/admin/settings")
         const settings = await res.json()
-        const whatsappSetting = settings.find((s: any) => s.key === "whatsapp_number")
+        const whatsappSetting = settings.find((s: { key: string; value: string }) => s.key === "whatsapp_number")
         if (whatsappSetting) {
           setWhatsappNumber(whatsappSetting.value)
         }

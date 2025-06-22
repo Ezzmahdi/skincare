@@ -55,7 +55,7 @@ export default function ProductForm({ product, onSave, onCancel }: ProductFormPr
       const filePath = `${fileName}`
 
       // Upload file to Supabase storage
-      const { data: uploadData, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from("product-images")
         .upload(filePath, file, {
           cacheControl: "3600",
