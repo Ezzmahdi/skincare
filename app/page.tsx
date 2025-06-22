@@ -54,7 +54,14 @@ export default async function HomePage() {
               </p>
             </div>
 
-            <ProductGrid products={featuredProducts} />
+            {featuredProducts.length > 0 ? (
+              <ProductGrid products={featuredProducts} />
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-gray-500 text-lg">No products available at the moment.</p>
+                <p className="text-gray-400 text-sm mt-2">Please check back later!</p>
+              </div>
+            )}
           </div>
         </section>
 
