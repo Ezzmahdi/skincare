@@ -7,15 +7,6 @@ import Image from "next/image"
 
 async function getFeaturedProducts() {
   try {
-    // Check if Supabase is properly configured
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    
-    if (!supabaseUrl || !supabaseAnonKey) {
-      console.log("Supabase not configured - returning empty products")
-      return []
-    }
-
     const { data: products, error } = await supabase
       .from("products")
       .select("*")
